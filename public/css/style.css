@@ -1,0 +1,539 @@
+/* ------------------------------------------------------------------
+   Rozetka-style theme   (оновлено: червень-2025)
+------------------------------------------------------------------ */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap");
+
+:root {
+    --c-green:        #00a046;
+    --c-green-dark:   #00913f;
+    --c-gray-50:      #f8f9fa;
+    --c-gray-100:     #f1f3f5;
+    --c-gray-200:     #e9ecef;
+    --c-gray-700:     #343a40;
+    --c-danger:       #dc3545;
+    --c-white:        #ffffff;
+    --shadow:         0 2px 8px rgba(0,0,0,.06);
+}
+
+* { box-sizing: border-box; margin: 0; }
+
+body {
+    font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+    background: var(--c-gray-50);
+    color: var(--c-gray-700);
+    line-height: 1.45;
+    padding: 20px;
+}
+
+/* ==================================================================
+   Layout: container, header, footer
+   ================================================================== */
+
+.container {
+    max-width: 1240px;
+    margin-inline: auto;
+    padding-inline: 1rem;
+}
+/* ---------- logo в два елементи ---------- */
+.logo-wrap {
+    display: flex;            /* один рядок */
+    align-items: center;
+    gap: .65rem;              /* відступ між фото і текстом */
+    margin: 0;                /* скидаємо h1 */
+}
+
+.logo-img {
+    height: 40px;             /* налаштуйте за своїм макетом */
+    width: auto;
+    display: block;
+}
+
+/* текстове посилання оформлюємо окремо */
+.logo-text-link {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--c-green);
+    text-decoration: none;
+    line-height: 1;
+}
+.logo-text-link:hover { opacity: .8; }
+
+/* (за бажанням) прибираємо підкреслення в посиланні-картинці */
+.logo-img-link { text-decoration: none; }
+
+
+
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    background: var(--c-white);
+    border-bottom: 1px solid var(--c-gray-200);   /* тонка сіра лінія */
+    box-shadow: 0 2px 4px rgba(0,0,0,.04);       /* ледве помітна тінь */
+}
+
+.site-header .container {
+    display: flex;
+    align-items: center;
+    height: 64px;                     /* класична висота шапки */
+}
+
+/* Логотип / назва сайту */
+.site-header .logo a {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--c-green);
+    text-decoration: none;
+    letter-spacing: -.5px;
+    line-height: 1;
+    display: block;
+}
+
+/* Навігація всередині шапки (за потреби) */
+.site-header .main-nav {
+    display: flex;
+    gap: 1.25rem;
+    margin-left: 2rem;                /* відступ після логотипа */
+}
+.site-header .main-nav a {
+    color: var(--c-gray-700);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color .15s;
+}
+.site-header .main-nav a:hover { color: var(--c-green-dark); }
+
+/* Правий блок (користувач, кнопка «Вийти» тощо) */
+.site-header .user-area {
+    margin-left: auto;                /* до правого краю */
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* ===============================================================
+   Footer
+   =============================================================== */
+.site-footer {
+    background: var(--c-gray-200);
+    color: var(--c-gray-700);
+    padding: 2.5rem 0 2rem;
+    margin-top: 4rem;
+    font-size: .9rem;
+}
+.footer-grid {
+    display: grid;
+    gap: 2rem 4rem;
+    grid-template-columns: repeat(auto-fit, minmax(230px,1fr));
+}
+.footer-title  { font-size: 1.25rem; font-weight: 700; color: var(--c-green); margin-bottom:.75rem; }
+.footer-subtitle { font-weight: 600; margin-bottom:.5rem; }
+
+.footer-text { line-height: 1.4; }
+
+.footer-nav ul { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:.4rem; }
+.footer-nav a  { color: var(--c-gray-700); text-decoration:none; transition:color .15s; }
+.footer-nav a:hover { color: var(--c-green-dark); }
+
+.social-wrap { display:flex; gap:.5rem; margin-top:.4rem; }
+.social-icon {
+    width: 34px; height: 34px; line-height:34px;
+    text-align:center;
+    border-radius:50%; background: var(--c-green);
+    color:#fff; font-weight:600; font-size:.8rem;
+    text-decoration:none; transition: background .15s;
+}
+.social-icon:hover { background: var(--c-green-dark); }
+
+.footer-copy { margin-top: .75rem; font-size:.8rem; }
+
+
+/* -------------------- Навігаційна смуга ------------------------- */
+.topbar {
+    background: var(--c-green);
+    padding: .75rem 1rem;
+    color: black;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+.topbar a,
+.topbar form button {
+    color: black;               /* було black → тепер білий */
+    text-decoration: none;
+    font-weight: 600;
+}
+.topbar a:hover,
+.topbar form button:hover {
+    text-decoration: underline;
+}
+.topbar form { margin-left: auto; }
+
+/* -------------------- Кнопки ------------------------------------ */
+.btn,
+.load-more,
+.pager-btn {
+    display: inline-block;
+    padding: .5rem 1.25rem;
+    background: var(--c-green);
+    color: var(--c-white);
+    border-radius: .5rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background .15s, transform .15s;
+    border: none;
+    cursor: pointer;
+}
+.btn:hover,
+.load-more:hover,
+.pager-btn:hover {
+    background: var(--c-green-dark);
+    transform: translateY(-2px);
+}
+.btn:active,
+.load-more:active,
+.pager-btn:active { transform: translateY(0); }
+
+.btn-secondary {
+    background: var(--c-gray-200);
+    color: #000;
+}
+.btn-secondary:hover { background: var(--c-gray-100); }
+
+/* -------------------- Кнопки пагінації -------------------------- */
+.pager-wrap {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+.pager-btn {
+    display: block;
+    width: max-content;
+    margin: 0 auto;
+    padding: .75rem 2rem;
+}
+.pager-btn[disabled],
+.pager-btn.is-loading {
+    opacity: .65;
+    cursor: default;
+    pointer-events: none;
+}
+.load-prev {
+    background: var(--c-gray-200);
+    color: #000;
+}
+.load-prev:hover { background: var(--c-gray-100); }
+
+/* -------------------- Повідомлення ------------------------------ */
+.alert-success {
+    background: #d1e7dd;
+    color: #0f5132;
+    padding: .75rem 1rem;
+    border-radius: .5rem;
+    margin-bottom: 1rem;
+    border-left: 4px solid var(--c-green);
+}
+
+/* -------------------- Форма пошуку + фільтра -------------------- */
+.search-filter {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-end;
+    background: var(--c-white);
+    padding: 1rem;
+    border-radius: .5rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+}
+.search-filter .form-group { flex: 1; margin-bottom: 0; }
+.search-filter button         { flex-shrink: 0; }
+
+/* -------------------- Форма додавання категорії ----------------- */
+.category-form {
+    display: flex;
+    gap: 1rem;
+    background: var(--c-white);
+    padding: 1rem;
+    border-radius: .5rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+}
+.category-form .form-group { flex: 1; margin-bottom: 0; }
+.category-form button      { flex-shrink: 0; }
+
+/* -------------------- Категорії -------------------------- */
+.category-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    list-style: none;
+    margin-bottom: 2rem;
+}
+.category-list li {
+    display: flex;
+    align-items: center;
+    background: var(--c-white);
+    border: 1px solid var(--c-gray-200);
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    box-shadow: var(--shadow);
+    transition: box-shadow .15s, transform .15s;
+}
+.category-list li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,.08);
+}
+.category-list li .action {
+    margin-right: .5rem;
+    color: var(--c-green);
+    font-weight: 600;
+    text-decoration: none;
+}
+.category-list li .action:hover { text-decoration: underline; }
+.category-list li .delete-btn {
+    background: var(--c-danger);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 1.5rem; height: 1.5rem;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background .15s;
+}
+.category-list li .delete-btn:hover { background: #b52a37; }
+
+/* -------------------- Грід карток ------------------------------- */
+.grid-auto {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;          /* відступ перед пагінатором */
+}
+
+/* -------------------- Картка товару ------------------------------ */
+.card-rz {
+    background: var(--c-white);
+    box-shadow: var(--shadow);
+    border-radius: .75rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform .15s, box-shadow .15s;
+}
+.card-rz:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,.08);
+}
+.card-rz .img-box {
+    width: 100%; height: 180px;
+    background: var(--c-gray-100);
+    display: flex; align-items: center; justify-content: center;
+}
+.card-rz img {
+    max-width: 100%; max-height: 100%;
+    object-fit: contain; display: block;
+}
+.card-rz .txt {
+    padding: 1rem;
+    display: flex; flex-direction: column; gap: .4rem;
+    flex-grow: 1;
+}
+.card-rz .title {
+    font-weight: 600; line-height: 1.25;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.card-rz .cat   { font-size: .875rem; color: #69707a; }
+.card-rz .price { margin-top: auto; color: var(--c-green);
+                  font-weight: 700; font-size: 1.25rem; }
+.card-rz .actions { display: flex; gap: .5rem; padding-top: .75rem; }
+.card-rz .actions a      { color: var(--c-green); font-weight: 600; text-decoration: none; }
+.card-rz .actions button { background: none; border: none; color: var(--c-danger); font-weight: 600; cursor: pointer; }
+
+/* -------------------- Форма (загальні) -------------------------- */
+.form-group {
+    display: flex; flex-direction: column; margin-bottom: 1rem;
+}
+.form-group label { margin-bottom: .35rem; font-weight: 600; }
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: .55rem .75rem;
+    border: 1px solid var(--c-gray-200);
+    border-radius: .5rem;
+    background: #fff;
+    font: inherit;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--c-green);
+    box-shadow: 0 0 0 3px rgba(0,160,70,.15);
+}
+
+/* === Ціна та кнопка в один рядок === */
+.price-action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;           /* відстань між ціні та кнопкою */
+  margin-bottom: 1rem; /* відстань під блоком */
+}
+
+.price-action__text {
+  font-weight: 700;
+  color: var(--c-green);
+}
+
+.price-action__btn {
+  /* успадковуємо стилі .btn, але можна тут підправити */
+}
+
+/* ------------------------------------------------------------------
+   Cart page: розеткоподібна таблиця кошика
+------------------------------------------------------------------ */
+.cart-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--c-white);
+  box-shadow: var(--shadow);
+  border-radius: .5rem;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  font-size: .95rem;
+}
+
+/* Голова таблиці — зелена, білий текст */
+.cart-table thead {
+  background: var(--c-green);
+}
+.cart-table thead th {
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+  font-weight: 600;
+  border-bottom: none;
+}
+
+/* Рядки, клітинки */
+.cart-table th,
+.cart-table td {
+  padding: .75rem 1rem;
+  text-align: center;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--c-gray-200);
+}
+
+/* Hover-ефект для рядка */
+.cart-table tbody tr:hover {
+  background: var(--c-gray-50);
+}
+
+/* Фото і назва в одному стовпчику */
+.cart-table .cart-product-cell {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+}
+.cart-table .cart-product-cell img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: .25rem;
+}
+
+/* Поле кількості */
+.cart-table .cart-quantity-form {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+}
+.cart-table .cart-quantity-input {
+  width: 3rem;
+  padding: .25rem .5rem;
+  border: 1px solid var(--c-gray-200);
+  border-radius: .25rem;
+  text-align: center;
+  font: inherit;
+}
+.cart-table .cart-quantity-btn {
+  padding: .35rem .75rem;
+}
+
+/* Кнопка «×» в дії */
+.cart-table .cart-remove-btn {
+  font-size: 1.25rem;
+  line-height: 1;
+  background: none;
+  border: none;
+  color: var(--c-danger);
+  cursor: pointer;
+  transition: color .15s;
+}
+.cart-table .cart-remove-btn:hover {
+  color: #ad1e34;
+}
+
+/* Підсумок і очищення */
+.cart-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+}
+.cart-actions .total {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+.cart-actions .btn-clear {
+  background: var(--c-gray-200);
+  color: #000;
+  padding: .5rem 1rem;
+  border: none;
+  border-radius: .5rem;
+  cursor: pointer;
+  transition: background .15s;
+}
+.cart-actions .btn-clear:hover {
+  background: var(--c-gray-100);
+}
+
+
+
+/* ------------------------------------------------------------------
+   Checkout page styles
+------------------------------------------------------------------ */
+.checkout-page {
+  background: var(--c-white);
+  padding: 1.5rem;
+  border-radius: .5rem;
+  box-shadow: var(--shadow);
+  margin-bottom: 2rem;
+}
+.checkout-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+.checkout-empty {
+  font-size: 1rem;
+  color: var(--c-gray-700);
+}
+.checkout-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+.checkout-item {
+  padding: .5rem 0;
+  border-bottom: 1px solid var(--c-gray-200);
+}
+.checkout-total {
+  font-size: 1.25rem;
+  margin: 1rem 0;
+}
