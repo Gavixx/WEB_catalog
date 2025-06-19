@@ -22,14 +22,12 @@ class CategoryController extends Controller
     {
         return view('categories.edit', compact('category'));
     }
-
     public function update(UpdateCategoryRequest $request, Category $category)
     {
         $category->update($request->validated());
         return redirect()->route('catalog')
                          ->with('success', 'Категорію оновлено');
     }
-
     public function destroy(Category $category)
     {
         $category->delete();

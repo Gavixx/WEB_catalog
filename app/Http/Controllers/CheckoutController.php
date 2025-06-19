@@ -22,9 +22,7 @@ class CheckoutController extends Controller
 
     public function process(Request $request)
     {
-        // Тут ви можете інтегрувати платіжний шлюз...
-        // Для заглушки просто очищаємо корзину і показуємо успіх
-
+        
         $userId = $request->session()->get('user_id');
         CartItem::where('user_id', $userId)->delete();
 

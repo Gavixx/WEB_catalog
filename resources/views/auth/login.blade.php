@@ -1,7 +1,5 @@
 @extends('layouts.app')
-
 @section('title','Увійти')
-
 @section('content')
 <div style="max-width:400px;margin:2rem auto;background:#fff;padding:1.5rem;border-radius:.5rem;box-shadow:var(--shadow);">
     <h1>Увійти</h1>

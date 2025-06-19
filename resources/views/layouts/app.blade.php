@@ -9,24 +9,18 @@
 
 <body>
 
-  {{-- header показуємо ТІЛЬКИ коли користувач залогінений --}}
   @if(session()->has('user_id'))
     <header class="site-header">
     <div class="container">
       <h1 class="logo-wrap">
-      {{-- окреме посилання-картинка --}}
+
       <a href="{{ route('catalog') }}" class="logo-img-link">
         <img src="{{ asset('images/logo.svg') }}" alt="Логотип" class="logo-img">
       </a>
-
-      {{-- окреме посилання-текст --}}
       <a href="{{ route('catalog') }}" class="logo-text-link">
         Турбо-Комфорт
       </a>
       </h1>
-
-
-      {{-- (необов’язково) навігаційні лінки прямо в header --}}
       <nav class="main-nav">
       <a href="{{ route('catalog') }}">Каталог</a>
       <a href="{{ route('cart.index') }}">Корзина</a>
@@ -48,28 +42,6 @@
     </header>
   @endif
 
-
-  {{-- top-bar теж тільки для залогінених (у вас вже так було) --}}
-  <!-- @if(session()->has('user_id'))
-    <nav class="topbar">
-    <a href="{{ route('catalog') }}">Каталог</a>
-
-    @if(auth()->check() && auth()->user()->role === 'admin')
-    <a href="{{ route('products.create') }}">Додати товар</a>
-    <a href="{{ route('categories.create') }}" class="btn">Додати категорію</a>
-    @endif
-
-    <span style="margin-left:auto;font-weight:600;">
-      {{ auth()->check() ? auth()->user()->name : '' }}
-    </span>
-
-    <form action="{{ route('logout') }}" method="POST" class="inline">
-      @csrf
-      <button type="submit" class="btn-secondary">Вийти</button>
-    </form>
-    </nav>
-  @endif -->
-
   <main class="px-4 py-3">
     @if(session('success'))
     <div class="alert-success">{{ session('success') }}</div>
@@ -78,9 +50,8 @@
     @yield('content')
   </main>
 
-  {{-- footer показуємо лише коли користувач залогінений --}}
   @if(session()->has('user_id'))
-    {{-- site-footer.blade.php (можна просто вставити у layouts.app) --}}
+    
     <footer class="site-footer">
     <div class="container footer-grid">
       {{-- Колонка 1 --}}
@@ -106,7 +77,6 @@
         <li><a href="mailto:rzhvanskoy@gmail.com">Підтримка</a></li>
       </ul>
       </nav>
-
       {{-- Колонка 3 --}}
       <div>
       <h4 class="footer-subtitle">Ми в соцмережах</h4>
@@ -124,7 +94,6 @@
 
   @endif
 
-  {{-- confirm-delete скрипт залишився без змін --}}
   <script>
     document.querySelectorAll('form button').forEach(btn => {
       if (
@@ -139,5 +108,4 @@
     });
   </script>
 </body>
-
 </html>

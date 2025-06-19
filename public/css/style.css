@@ -505,6 +505,30 @@ body {
 }
 
 
+/* ------------------------------------------------------------------
+   Product page styles
+------------------------------------------------------------------ */
+.product-page {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1fr 340px;
+    margin-top: 1rem;
+}
+/* product-page (show.blade) */
+.img-big {
+    width: 100%;
+    height: 560px;                         /* стало 560 для великих фото */
+    background: var(--c-gray-100);
+    display: flex; align-items:center; justify-content:center;
+}
+.img-big img {
+    max-height: 100%;                      /* головне — висота 560 */
+    width: auto;
+    object-fit: contain;
+}
+@media (max-width: 768px) {
+    .img-big { height: 400px; }            /* трішки зменшуємо для моб. */
+}
 
 /* ------------------------------------------------------------------
    Checkout page styles

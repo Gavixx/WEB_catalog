@@ -7,9 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     protected $fillable = [
-        'name', 'description', 'price', 'category_id', 'photo'
+        'name',
+        'description',
+        'price',
+        'category_id',
+        'photo'
     ];
-
     public function category()
     {
         return $this->belongsTo(Category::class);
@@ -18,5 +21,4 @@ class Product extends Model
     {
         return $this->hasMany(CartItem::class);
     }
-
 }
